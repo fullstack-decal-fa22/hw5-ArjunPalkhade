@@ -1,7 +1,7 @@
-import {_________} from "react";
+import {useState} from "react";
 import axios from "axios";
 
-const NewPost = ({ _________ }) => {
+const NewPost = ({ getPost }) => {
   const [id, setId] = useState();
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
@@ -13,8 +13,11 @@ const NewPost = ({ _________ }) => {
       body
     })
 
-    axios.post(_________, _________).then(_________);
-  }
+    axios
+    .post("http://localhost:3002/post", {id, title, body})
+    .then((response) => {getPost(response); console.log(response)})
+    .catch((error) => {console.log(error)});
+  } 
 
   return <div>
     <div>
